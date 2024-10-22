@@ -1,0 +1,49 @@
+.main__container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    width: 30%;
+    height: 30%;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #000;
+}
+
+.card__title {
+    background-color: #305DFF;
+    color: white;
+    font-weight: bold;
+    padding: 20px 20px;
+    border-radius: 3px 3px 0 0;
+}
+
+.card__form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card__form-item {
+    display: flex;
+    align-items: flex-end;
+    height: 50px;
+}
+
+.card__form-icon {
+    width: 20%;
+    background-color: #305DFF;
+}
+
+.card__form-text {
+    width: 80%;
+    padding: 0 10px;
+}
+
+.card__form-text input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000;
+}

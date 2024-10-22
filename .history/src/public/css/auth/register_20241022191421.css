@@ -1,0 +1,15 @@
+.card {
+    width: 25%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #000;
+}
+
+.card__title {
+    background-color: #305DFF;
+    color: white;
+    font-weight: bold;
+    padding: 30px 20px;
+    border-radius: ;
+}
