@@ -1,0 +1,46 @@
+body {
+    background-color: whitesmoke;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    width: 80%;
+    height: 10%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.header__logo {
+    color: #305DFF;
+    font-size: 30px;
+}
+
+.header__hamburger {
+    width: 40px;
+    height: 25px;
+    position: relative;
+}
+
+.hamburger__menu-link {
+    color: #305DFF;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 550;
+}
+
+.hamburger__menu-logout {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #305DFF;
+    font-size: 25px;
+    margin: 20px;
+}
+
+.registration {
+    display: block;
+    margin: 20px;
+}
