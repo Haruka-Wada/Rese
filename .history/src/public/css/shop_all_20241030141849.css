@@ -1,0 +1,63 @@
+.main__wrapper {
+    width: 100vw;
+    position: absolute;
+    top: -30px;
+    transform: translate(100%);
+}
+
+.main__contents {
+    padding: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 30%;
+    margin: 30px auto 0;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 5px;
+}
+
+.card__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__content {
+    padding: 15px 25px;
+}
+
+.card__content-name {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.card__content-cat {
+    padding: 5px 10px;
+    background: #008888;
+    margin-bottom: 15px;
+    display: inline-block;
+    /* 要素の文字数に応じて幅が変更されるためにinline-blockを指定 */
+    color: #fff;
+    font-size: 14px;
+}
+
+.card__content-tag {
+    font-size: 14px;
+    text-align: right;
+    /* 親要素にtext-alignを適用すると子要素のinline-block要素に適応される */
+}
+
+.card__content-tag-item {
+    display: inline-block;
+    /* 横並びにするためにinline-blockを指定 */
+    color: #008888;
+}
+
+.card__content-tag-item--last {
+    display: inline-block;
+    /* 横並びにするためにinline-blockを指定 */
+    margin-left: 20px;
+    color: #888888;
+}

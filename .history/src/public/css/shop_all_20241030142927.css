@@ -1,0 +1,51 @@
+.main__wrapper {
+    width: 100vw;
+    position: absolute;
+    top: -30px;
+    transform: translate(100%);
+}
+
+.main__contents {
+    padding: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 24%;
+    margin: 30px auto 0;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 5px;
+}
+
+.card__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__content {
+    padding: 15px 25px;
+}
+
+.card__content-name {
+    font-size: 18px;
+}
+
+.card__content-tag {
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.card__content-detail {
+    width: 45%;
+    font-size: 14px;
+    background-color: #305DFF;
+    line-height: 1.3;
+    text-align: center;
+    bor
+}
+
+.card__content-detail a{
+    color: white;
+    text-decoration: none;
+}
