@@ -1,0 +1,109 @@
+.header__wrapper {
+    padding: 40px 50px;
+    justify-content: flex-end;
+}
+
+.header__hamburger {
+    position: absolute;
+    position: absolute;
+    top: 45px;
+    left: 50px;
+}
+
+.header__search {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    background-color: white;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 5px;
+}
+
+.header__search-area {
+    border: none;
+    width: 20%;
+    margin: 12px 0;
+    padding: 0 8px;
+    margin-right: 8px;
+}
+
+.header__search-genre{
+    width: 20%;
+    border: none;
+    margin: 12px 0;
+    padding: 0 8px;
+    border-left: 1px solid gainsboro;
+    margin-right: 8px;
+}
+
+.header__search-icon {
+    width: ;
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding: 0 10px;
+    border-left: 1px solid gainsboro;
+}
+
+.header__search-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+.header__search-keyword {
+    width: 45%;
+    border: none;
+}
+.main__wrapper {
+    width: 100vw;
+    position: absolute;
+    top: -30px;
+    padding: 10px 0;
+    transform: translate(100%);
+}
+
+.main__contents {
+    padding: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 24%;
+    margin: 20px auto 0;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 5px;
+}
+
+.card__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__content {
+    padding: 15px 25px;
+}
+
+.card__content-name {
+    font-size: 18px;
+}
+
+.card__content-tag {
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.card__content-detail {
+    width: 40%;
+    font-size: 13px;
+    background-color: #305DFF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 3px;
+    margin: 5px 0;
+}
+
+.card__content-detail a{
+    color: white;
+    text-decoration: none;
+}
