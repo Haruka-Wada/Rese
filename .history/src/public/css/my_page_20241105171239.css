@@ -1,0 +1,53 @@
+.main__wrapper {
+    padding: 30px;
+    transform: translateX(100%);
+}
+
+.main__title {
+    text-align: center;
+    font-size: 26px;
+    padding-bottom: 30px;
+}
+
+.main__container {
+    display: flex;
+}
+
+.reservations__container {
+    width: 40%;
+    padding: 30px;
+}
+
+.reservation__confirm {
+    background-color: #4D7EFF;
+    border-radius: 3px;
+    color: white;
+    padding: 30px 20px;
+}
+
+.reservation__confirm-list {
+    font-size: 14px;
+    display: flex;
+    padding: 5px 0;
+}
+
+.reservation__confirm-item {
+    width: 25%;
+}
+
+.reservation__confirm-content {
+    width: 75%;
+}
+
+.favorites__container {
+    width: 60%;
+    padding: 30px;
+}
+
+.reservations__container-title {
+    font-size: 20px;
+}
+
+.favorites__container-title {
+    font-size: 20px;
+}

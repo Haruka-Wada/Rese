@@ -1,0 +1,24 @@
+.main__wrapper {
+    padding: 30px;
+    transform: translateX(100%);
+}
+
+.main__title {
+    text-align: center;
+    font-size: 26px;
+    padding-bottom: 30px;
+}
+
+.main__container {
+    display: flex;
+}
+
+.res
+
+.reservations__container-title {
+    font-size: 20px;
+}
+
+.favorites__container-title {
+    font-size: 20px;
+}

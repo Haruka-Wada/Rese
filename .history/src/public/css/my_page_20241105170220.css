@@ -1,0 +1,10 @@
+.main__wrapper {
+    padd
+    transform: translateX(100%);
+}
+
+.main__title {
+    height: 20%;
+    text-align: center;
+    font-size: 26px;
+}
