@@ -1,0 +1,10 @@
+.main__container {
+    transform: translateX(100%);
+    display: flex;
+    padding: 50px;
+}
+
+.shop__container {
+    width: 50%;
+    margin-right: 50;
+}

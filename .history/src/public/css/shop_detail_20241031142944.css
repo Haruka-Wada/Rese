@@ -1,0 +1,30 @@
+.main__container {
+    transform: translateX(100%);
+    display: flex;
+    padding: 50px;
+}
+
+.shop__container {
+    width: 50%;
+    margin-right: 50px;
+}
+
+.shop__name-area {
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.shop__name-area button {
+    width: 30px;
+    height: 3
+    font-siz
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.shop__name-area h2 {
+    padding-left: 20px;
+    font-size: 30px;
+}
