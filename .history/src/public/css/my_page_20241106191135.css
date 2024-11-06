@@ -1,0 +1,167 @@
+.main__wrapper {
+    padding: 30px;
+    transform: translateX(100%);
+}
+
+.main__title {
+    text-align: center;
+    font-size: 26px;
+    padding-bottom: 30px;
+}
+
+.main__container {
+    display: flex;
+}
+
+.reservations__container {
+    width: 40%;
+    padding: 30px;
+}
+
+.reservations__container-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.reservation__card {
+    background-color: #305DFF;
+    border-radius: 5px;
+    color: white;
+    padding: 30px 20px;
+    margin-right: 30px;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.reservation__card-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.reservation__card-header-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.reservation__card-header-icon img{
+    width: 100%;
+}
+
+.reservation__card-header-title {
+    flex-grow: 2;
+    padding-left: 10px;
+}
+
+.reservation__card-header-close {
+    width: 20px;
+    height: 20px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.reservation__card-header-close a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+}
+
+.reservation__card-list {
+    font-size: 14px;
+    display: flex;
+    padding: 10px 0;
+}
+
+.reservation__card-list:last-child {
+    padding: 10px 0 0;
+}
+
+.reservation__card-item {
+    width: 30%;
+}
+
+.reservation__card-content {
+    width: 70%;
+}
+
+.favorites__container {
+    width: 60%;
+    padding: 30px;
+}
+
+.favorites__contents {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favorites__container-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 45%;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 5px;
+}
+
+.card__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__content {
+    padding: 15px 25px;
+}
+
+.card__content-name {
+    font-size: 18px;
+}
+
+.card__content-tag {
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.card__content-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__content-detail-link {
+    width: 85px;
+    margin: 5px 0;
+}
+
+.card__content-detail-link form {
+    width: 100%;
+    height: 100%;
+}
+
+.card__content-detail button {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    border: none;
+    background-color: #305DFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.card__content-detail-fav img {
+    width: 40px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.liked {
+    filter: brightness(0) saturate(100%) invert(33%) sepia(89%) saturate(7236%) hue-rotate(353deg) brightness(89%) contrast(127%);
+}
