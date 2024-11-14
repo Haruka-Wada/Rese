@@ -23,9 +23,9 @@
         @endforeach
     </select>
     <div class="header__search-icon">
-        <label for="keyword"><img src="{{ asset('img/search.png') }}"></label>
+        <label for="search"><img src="{{ asset('img/search.png') }}"></label>
     </div>
-    <input type="text" id="keyword" class="header__search-keyword" placeholder="Search ...">
+    <input type="text" id="search" class="header__search-keyword" placeholder="Search ...">
 </div>
 @endsection
 
@@ -71,18 +71,18 @@
             </div>
         </div>
         @endforeach
+        <ul>
+            <li></li>
+        </ul>
     </div>
 </div>
 
 <script src="{{ asset('js/favorite.js') }}"></script>
 <script>
     $(function() {
-        $('[name=area_id],[name=genre_id],[id=keyword]').change(function() {
-            $('div').removeClass('show');
+        $('[name=area_id]').change(function() {
+            areaId = '';
             areaId = $('[name="area_id"]').val();
-            genreId = $('[name="genre_id"]').val();
-            keyword = $('[id=keyword]').val();
-            console.log(keyword);
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -90,25 +90,16 @@
                 url: '/search',
                 method: 'GET',
                 data: {
-                    'area_id': areaId,
-                    'genre_id': genreId,
-                    'keyword': keyword
+                    'area_id': areaId
                 },
             }).done(function(res) {
                 var shops = res.shops;
                 $.each(shops, function(index, value) {
                     var shop_id = value.id;
                     var card = document.getElementById(shop_id);
-                    $(card).addClass('show');
+                    $('div[').not.show();
                 })
-                $('.show').css('display', 'block');
-                $('.card').not('.show').css('display', 'none');
-            }).fail(function(res) {
-                alert('データ取得できませんでした。');
             })
-        })
-        $(function(){
-            const keyword = document.getElementById("")
         })
     })
 </script>

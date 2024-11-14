@@ -23,9 +23,9 @@
         @endforeach
     </select>
     <div class="header__search-icon">
-        <label for="keyword"><img src="{{ asset('img/search.png') }}"></label>
+        <label for="search"><img src="{{ asset('img/search.png') }}"></label>
     </div>
-    <input type="text" id="keyword" class="header__search-keyword" placeholder="Search ...">
+    <input type="text" id="search" class="header__search-keyword" placeholder="Search ...">
 </div>
 @endsection
 
@@ -71,6 +71,9 @@
             </div>
         </div>
         @endforeach
+        <ul>
+            <li></li>
+        </ul>
     </div>
 </div>
 
@@ -81,8 +84,7 @@
             $('div').removeClass('show');
             areaId = $('[name="area_id"]').val();
             genreId = $('[name="genre_id"]').val();
-            keyword = $('[id=keyword]').val();
-            console.log(keyword);
+            keyword = $('[')
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -91,8 +93,7 @@
                 method: 'GET',
                 data: {
                     'area_id': areaId,
-                    'genre_id': genreId,
-                    'keyword': keyword
+                    'genre_id': genreId
                 },
             }).done(function(res) {
                 var shops = res.shops;

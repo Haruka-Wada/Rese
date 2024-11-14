@@ -23,9 +23,9 @@
         @endforeach
     </select>
     <div class="header__search-icon">
-        <label for="keyword"><img src="{{ asset('img/search.png') }}"></label>
+        <label for="search"><img src="{{ asset('img/search.png') }}"></label>
     </div>
-    <input type="text" id="keyword" class="header__search-keyword" placeholder="Search ...">
+    <input type="text" id="search" class="header__search-keyword" placeholder="Search ...">
 </div>
 @endsection
 
@@ -71,18 +71,19 @@
             </div>
         </div>
         @endforeach
+        <ul>
+            <li></li>
+        </ul>
     </div>
 </div>
 
 <script src="{{ asset('js/favorite.js') }}"></script>
 <script>
     $(function() {
-        $('[name=area_id],[name=genre_id],[id=keyword]').change(function() {
+        $('[name=area_id],[name=genre_id]').change(function() {
             $('div').removeClass('show');
             areaId = $('[name="area_id"]').val();
-            genreId = $('[name="genre_id"]').val();
-            keyword = $('[id=keyword]').val();
-            console.log(keyword);
+            genreId = $('[name="genre_id')
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -90,9 +91,7 @@
                 url: '/search',
                 method: 'GET',
                 data: {
-                    'area_id': areaId,
-                    'genre_id': genreId,
-                    'keyword': keyword
+                    'area_id': areaId
                 },
             }).done(function(res) {
                 var shops = res.shops;
@@ -107,8 +106,31 @@
                 alert('データ取得できませんでした。');
             })
         })
-        $(function(){
-            const keyword = document.getElementById("")
+
+        $('[name=genre_id]').change(function() {
+            $('div').removeClass('show');
+            genreId = $('[name="genre_id"]').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/search',
+                method: 'GET',
+                data: {
+                    'genre_id': genreId
+                },
+            }).done(function(res) {
+                var shops = res.shops;
+                $.each(shops, function(index, value) {
+                    var genre_id = value.id;
+                    var card = document.getElementById(genre_id);
+                    $(card).addClass('show');
+                })
+                $('.show').css('display', 'block');
+                $('.card').not('.show').css('display', 'none');
+            }).fail(function(res) {
+                alert('データ取得できませんでした。');
+            })
         })
     })
 </script>

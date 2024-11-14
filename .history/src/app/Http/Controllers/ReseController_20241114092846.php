@@ -25,6 +25,7 @@ class ReseController extends Controller
         $query = Shop::query();
         $query = $this->getSearchQuery($request, $query);
         $shops = $query->get();
+        dd(
         return response()->json(['shops'=>$shops]);
     }
 
@@ -34,7 +35,7 @@ class ReseController extends Controller
         }
 
         if(!empty($request->genre_id)) {
-            $query->where('genre_id', '=', $request->genre_id);
+            $query->where('genre_id', '=', '$request->genre_id');
         }
 
         if(!empty($request->keyword)) {

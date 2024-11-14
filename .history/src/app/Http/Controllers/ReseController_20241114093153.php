@@ -25,6 +25,7 @@ class ReseController extends Controller
         $query = Shop::query();
         $query = $this->getSearchQuery($request, $query);
         $shops = $query->get();
+        dd($shops);
         return response()->json(['shops'=>$shops]);
     }
 

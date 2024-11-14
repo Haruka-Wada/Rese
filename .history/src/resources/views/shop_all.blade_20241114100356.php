@@ -23,7 +23,7 @@
         @endforeach
     </select>
     <div class="header__search-icon">
-        <label for="keyword"><img src="{{ asset('img/search.png') }}"></label>
+        <label for="search"><img src="{{ asset('img/search.png') }}"></label>
     </div>
     <input type="text" id="keyword" class="header__search-keyword" placeholder="Search ...">
 </div>
@@ -71,6 +71,9 @@
             </div>
         </div>
         @endforeach
+        <ul>
+            <li></li>
+        </ul>
     </div>
 </div>
 
