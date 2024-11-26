@@ -159,7 +159,7 @@
 
     .shop__container {
         width: 90%;
-        margin: 30px;
+        margin: 0;
     }
 
     .reservation__container {
@@ -169,17 +169,37 @@
     }
 
     .reservation__wrap {
-        height: auto;
         padding: 20px 20px 50px;
-        margin: 0 30px;
+        margin: 0;
+    }
+
+    .reservation__title {
+        padding: 20px 0;
     }
 
     .reservation__date {
         width: 90%;
+        margin: 10px 0;
+    }
+
+    .reservation__time, .reservation__number {
+        margin: 0 0 10px;
+    }
+
+    .reservation__confirm {
+        margin: 0;
+    }
+    
+    .reservation__confirm-item {
+        width: 30%;
+    }
+
+    .reservation__confirm-content {
+        width: 70%;
     }
 
     .reservation__button {
-        margin: 0 30px;
+        margin: 0 0 20px;
     }
 }
 
