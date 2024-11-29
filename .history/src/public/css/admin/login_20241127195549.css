@@ -1,0 +1,20 @@
+.header__nav {
+    display: none;
+}
+
+.home-button {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+
+.home-button button {
+    background-color: white;
+    color: #305DFF;
+    border: 1px solid #305DFF;
+    border-radius: 3px;
+    padding: 10px 20px;
+}

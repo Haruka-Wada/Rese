@@ -1,0 +1,12 @@
+.header__nav {
+    display: none;
+}
+
+.home-button {
+    height: 50px;
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+        margin-top: 20px;
+    }
+}
