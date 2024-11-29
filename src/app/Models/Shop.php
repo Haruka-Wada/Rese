@@ -24,4 +24,8 @@ class Shop extends Model
     public function isLikedBy($user): bool {
         return favorite::where('user_id', $user->id)->where('shop_id', $this->id)->first() !==null;
     }
+
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+    }
 }

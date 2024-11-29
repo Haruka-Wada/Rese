@@ -20,6 +20,8 @@ use SebastianBergmann\GlobalState\Restorer;
 Route::get('/', [ReseController::class, 'index']);
 Route::get('/detail/{shop_id?}', [ReseController::class, 'detail']);
 Route::get('/search', [ReseController::class, 'search']);
+Route::get('/manager', [ReseController::class, 'manager']);
+Route::get('/manager/update', [ReseController::class, 'update']);
 
 Route::middleware(['verified'])->group(function(){
     Route::middleware('auth')->group(function () {
@@ -33,7 +35,6 @@ Route::middleware(['verified'])->group(function(){
         Route::patch('/edit/update', [ReseController::class, 'reservationUpdate']);
         Route::get('/review', [ReseController::class, 'review']);
         Route::post('/score', [ReseController::class, 'score']);
-        Route::get('/manager', [ReseController::class. 'manager']);
     });
 });
 
