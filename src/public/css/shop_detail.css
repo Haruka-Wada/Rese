@@ -203,3 +203,13 @@
     }
 }
 
+@media screen and (max-width:480px){
+    .header__wrapper {
+        width: 100%;
+        padding: 0;
+    }
+
+    .reservation__confirm-item {
+        width: 50%;
+    }
+}

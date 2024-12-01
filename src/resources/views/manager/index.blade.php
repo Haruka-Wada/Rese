@@ -23,10 +23,10 @@
         <div class="card__img">
             <img src="{{ $shop->image }}">
         </div>
+        <h2>{{ $shop->name }}</h2>
         <div class="card__content">
-            <div class="card__content-name">
-                <h2>{{ $shop->name }}</h2>
-                <span class="card__content-tag">#{{ $shop->area->name }}</span>
+            <div class="card__content-tag">
+                <span class="card__content-tag">#{{ $shop->area->name }}</span><br>
                 <span class="card__content-tag">#{{ $shop->genre->name }}</span>
             </div>
             <div class="card__content-detail">

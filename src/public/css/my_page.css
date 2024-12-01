@@ -221,3 +221,22 @@
         margin:0 0 20px;
     }
 }
+
+@media screen and (max-width: 480px){
+    .reservations__container,
+    .favorites__container {
+        padding: 10px 0;
+    }
+
+    .reservation__card {
+        width: 80%;
+    }
+
+    .reservation__card-item {
+        width: 50%;
+    }
+
+    .favorite__card {
+        width: 100%;
+    }
+}

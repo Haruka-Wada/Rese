@@ -143,3 +143,13 @@ body {
         padding-top: 120px;
     }
 }
+
+@media screen and (max-width: 480px){
+    .header__wrapper {
+        padding: 0;
+    }
+
+    .header__logo {
+        left: 60px;
+    }
+}

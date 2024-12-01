@@ -1,3 +1,7 @@
+.header__nav {
+    display: none;
+}
+
 .header__wrapper {
     width: 35%;
 }
@@ -160,8 +164,11 @@
         padding: 20px 0;
     }
 
+    .update__name,
     .update__area,
-    .update__genre {
+    .update__genre,
+    .update__outline
+    {
         margin: 0 0 10px;
     }
 

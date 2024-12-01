@@ -139,26 +139,27 @@
 
 @media screen and (max-width:768px) {
     .main {
-            padding-top: 130px;
-        }
+        padding-top: 120px;
+    }
 
-        .header__wrapper {
-            width: 90%;
-            padding: 20px;
-        }
+    .main__container {
+        display: block;
+        padding: 0 30px;
+    }
 
-        .main__container {
-            display: block;
-            padding: 0 30px;
-        }
+    .shop__container {
+        width: 90%;
+        margin: 30px;
+    }
 
-        .shop__container {
-            width: 90%;
-            margin: 30px;
-        }
+    .review__wrap {
+        padding: 20px;
+        margin: 0 0 20px;
+    }
+}
 
-        .review__wrap {
-            padding: 20px;
-            margin: 0 0 20px;
-        }
+@media screen and (max-width: 480px){
+    .header__wrapper {
+        width: 100%;
+    }
 }

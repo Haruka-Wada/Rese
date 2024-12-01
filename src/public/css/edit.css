@@ -206,3 +206,10 @@
         margin: 0 0 20px;
     }
 }
+
+@media screen and (max-width:480px){
+    .header__wrapper {
+        width: 100%;
+        padding: 0;
+    }
+}

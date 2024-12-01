@@ -1,5 +1,5 @@
 .header__search {
-    width: 50%;
+    width: 500px;
     height: 50px;
     display: flex;
     background-color: white;
@@ -133,5 +133,30 @@
 
     .card {
         width: 47%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header__search {
+        width: 95%;
+        position: absolute;
+        top: 60px;
+        left: 10px;
+    }
+
+    .header__search-area,
+    .header__search-genre {
+        width: 30%;
+        font-size: 10px;
+        padding: 0;
+    }
+
+    .main__contents {
+        padding: 0 10px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 80%;
     }
 }
