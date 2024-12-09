@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ReseController;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\Owner;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\GlobalState\Restorer;
@@ -20,8 +21,6 @@ use SebastianBergmann\GlobalState\Restorer;
 Route::get('/', [ReseController::class, 'index']);
 Route::get('/detail/{shop_id?}', [ReseController::class, 'detail']);
 Route::get('/search', [ReseController::class, 'search']);
-Route::get('/manager', [ReseController::class, 'manager']);
-Route::get('/manager/update', [ReseController::class, 'update']);
 
 Route::middleware(['verified'])->group(function(){
     Route::middleware('auth')->group(function () {
@@ -40,9 +39,29 @@ Route::middleware(['verified'])->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::middleware('auth:administrators')->group(function(){
-        Route::get('/', [LoginController::class, 'index']);
-        Route::post('/logout', [LoginController::class, 'logout']);
+        Route::get('/', [Admin\LoginController::class, 'index']);
+        Route::post('/logout', [Admin\LoginController::class, 'logout']);
     });
-    Route::get('/login', [LoginController::class, 'loginView'])->name('admin.loginView');
-    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/login', [Admin\LoginController::class, 'loginView'])->name('admin.loginView');
+    Route::post('/login', [Admin\LoginController::class, 'login']);
+});
+
+Route::prefix('owner')->group(function () {
+    Route::middleware('auth:administrators')->group(function () {
+        Route::post('/register', [Owner\RegisterController::class, 'store']);
+    });
+});
+
+Route::prefix('owner')->group(function(){
+    Route::middleware('auth:owners')->group(function() {
+        Route::get('/', [Owner\LoginController::class, 'index']);
+        Route::post('/logout', [Owner\LoginController::class, 'logout']);
+        Route::get('/edit', [ReseController::class, 'edit']);
+        Route::patch('/update', [Owner\LoginController::class, 'update']);
+        Route::get('/create', [Owner\LoginController::class, 'create']);
+        Route::post('/store', [Owner\LoginController::class, 'store']);
+        Route::delete('/delete', [Owner\LoginController::class, 'destroy']);
+    });
+    Route::get('/login', [Owner\LoginController::class, 'loginView'])->name('owner.loginView');
+    Route::post('/login', [Owner\LoginController::class, 'login']);
 });

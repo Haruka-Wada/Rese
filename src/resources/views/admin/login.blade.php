@@ -23,10 +23,10 @@
             @csrf
             <div class="form-item">
                 <div class="form-icon">
-                    <img src="{{ asset('img/user.png') }}" alt="">
+                    <img src="{{ asset('img/mail.png') }}" alt="">
                 </div>
                 <div class="form-text">
-                    <input type="text" name="user_id" value="{{ old('user_id') }}" placeholder="UserID">
+                    <input type="text" name="email" value="{{ old('email') }}" placeholder="email">
                 </div>
             </div>
             <div class="form-item">

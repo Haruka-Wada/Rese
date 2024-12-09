@@ -22,21 +22,21 @@ class AdministratorsSeeder extends Seeder
         DB::table('administrators')->insert([
             [
                 'name' => 'hoge01',
-                'user_id' => 'admin001',
+                'email' => 'admin001@example.com',
                 'password' => Hash::make('pass0001'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()
             ],
             [
                 'name' => 'hoge02',
-                'user_id' => 'admin002',
+                'email' => 'admin002@example.com',
                 'password' => Hash::make('pass0002'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()
             ],
             [
                 'name' => 'hoge03',
-                'user_id' => 'admin003',
+                'email' => 'admin003@example.com',
                 'password' => Hash::make('pass0003'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()

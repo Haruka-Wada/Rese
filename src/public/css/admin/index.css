@@ -29,10 +29,12 @@
 }
 
 .form__title {
-    background-color: #305DFF;
-    color: white;
+    background-color: white;
+    color: #305DFF;
     font-weight: bold;
     padding: 20px 20px;
+    text-align: center;
+    border-bottom: 1px solid #305DFF;
     border-radius: 3px 3px 0 0;
 }
 
@@ -76,15 +78,15 @@ input::placeholder {
 .form-button {
     height: 50px;
     display: flex;
-    justify-content: end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
 
 .form-button button {
-    background-color: #305DFF;
-    color: white;
-    border: none;
+    background-color: white;
+    color: #305DFF;
+    border: 1px solid #305DFF;
     border-radius: 3px;
     padding: 10px 20px;
 }

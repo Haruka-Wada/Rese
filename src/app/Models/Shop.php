@@ -9,7 +9,7 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['area_id', 'genre_id', 'name', 'outline', 'image'];
+    protected $fillable = ['area_id', 'genre_id', 'name', 'outline', 'image', 'owner_id'];
 
     protected $guarded = ['id'];
 
@@ -27,5 +27,10 @@ class Shop extends Model
 
     public function reservations() {
         return $this->hasMany(Reservation::class);
+    }
+
+    public function getReservation() {
+        $reservations = Reservation::where('shop_id', '=', $this->id)->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
+        return $reservations;
     }
 }

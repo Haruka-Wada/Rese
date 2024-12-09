@@ -130,17 +130,4 @@ class ReseController extends Controller
         ]);
         return redirect('/mypage');
     }
-
-    public function manager() {
-        $shops = Shop::all();
-        $reservations = Reservation::with('shop', 'user')->get();
-        return view('manager.index', compact('shops', 'reservations'));
-    }
-
-    public function update(Request $request){
-        $shop =Shop::find($request->shop_id);
-        $areas = Area::all();
-        $genres = Genre::all();
-        return view('manager.update', compact('shop', 'areas', 'genres'));
-    }
 }

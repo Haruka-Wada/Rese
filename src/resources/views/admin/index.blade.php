@@ -16,19 +16,17 @@
 @section('main')
 <div class="form__container">
     <div class="form__title">
-        <p class="form__title-text">
-            Manager Registration
-        </p>
+        <p class="form__title-text">Manager Registration</p>
     </div>
     <div class="form__content">
-        <form class="form" action="manager/register" method="post">
+        <form class="form" action="/owner/register" method="post">
             @csrf
             <div class="form-item">
                 <div class="form-icon">
                     <img src="{{ asset('img/user.png') }}" alt="">
                 </div>
                 <div class="form-text">
-                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Username">
+                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Name">
                 </div>
             </div>
             <div class="form__error">

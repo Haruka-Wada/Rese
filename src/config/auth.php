@@ -44,9 +44,9 @@ return [
             'driver' => 'session',
             'provider' => 'administrators'
         ],
-        'managers' => [
+        'owners' => [
             'driver' => 'session',
-            'provider' => 'managers'
+            'provider' => 'owners'
         ]
 
     ],
@@ -77,9 +77,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Administrator::class,
         ],
-        'managers' => [
+        'owners' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Manager::class,
+            'model' => App\Models\Owner::class,
         ],
 
         // 'users' => [
@@ -106,6 +106,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'administrators' => [
+            'provider' => 'administrators',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'owners' => [
+            'provider' => 'owners',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
