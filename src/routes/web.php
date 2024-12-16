@@ -49,18 +49,20 @@ Route::prefix('admin')->group(function(){
 Route::prefix('owner')->group(function () {
     Route::middleware('auth:administrators')->group(function () {
         Route::post('/register', [Owner\RegisterController::class, 'store']);
+        Route::get('/mail', [Admin\MailableController::class, 'index']);
+        Route::post('/send', [Admin\MailableController::class, 'send']);
     });
 });
 
 Route::prefix('owner')->group(function(){
     Route::middleware('auth:owners')->group(function() {
-        Route::get('/', [Owner\LoginController::class, 'index']);
+        Route::get('/', [Owner\OwnerController::class, 'index']);
         Route::post('/logout', [Owner\LoginController::class, 'logout']);
-        Route::get('/edit', [ReseController::class, 'edit']);
-        Route::patch('/update', [Owner\LoginController::class, 'update']);
-        Route::get('/create', [Owner\LoginController::class, 'create']);
-        Route::post('/store', [Owner\LoginController::class, 'store']);
-        Route::delete('/delete', [Owner\LoginController::class, 'destroy']);
+        Route::get('/edit', [Owner\OwnerController::class, 'edit']);
+        Route::patch('/update', [Owner\OwnerController::class, 'update']);
+        Route::get('/create', [Owner\OwnerController::class, 'create']);
+        Route::post('/store', [Owner\OwnerController::class, 'store']);
+        Route::delete('/delete', [Owner\OwnerController::class, 'destroy']);
     });
     Route::get('/login', [Owner\LoginController::class, 'loginView'])->name('owner.loginView');
     Route::post('/login', [Owner\LoginController::class, 'login']);

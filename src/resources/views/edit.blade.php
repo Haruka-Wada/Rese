@@ -12,7 +12,7 @@
             <h2>{{ $reservation->shop->name }}</h2>
         </div>
         <div class="shop__img">
-            <img src="{{ $reservation->shop->image}}" alt="">
+            <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
         </div>
         <div class="shop__tag">
             <span>#{{ $reservation->shop->area->name }}</span>
@@ -61,7 +61,7 @@
                     </div>
                     <select name="number" id="" class="reservation__number">
                         <option disabled selected>人数を選択してください</option>
-                            @for($i = 1; $i < 51; $i++)
+                        @for($i = 1; $i < 51; $i++)
                             <option value="{{ $i }}">{{ $i }}人</option>
                             @endfor
                     </select>

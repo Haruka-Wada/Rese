@@ -6,6 +6,7 @@
 
 @section('button')
 <div class="logout">
+    <button onclick="location.href='/'">HOME</button>
     <form action="/logout" method="post">
         @csrf
         <button>Logout</button>
@@ -16,7 +17,7 @@
 @section('main')
 <div class="form__container">
     <div class="form__title">
-        <p class="form__title-text">Manager Registration</p>
+        <p class="form__title-text">Owner Registration</p>
     </div>
     <div class="form__content">
         <form class="form" action="/owner/register" method="post">
@@ -66,5 +67,9 @@
         </form>
     </div>
 </div>
-
+<div class="mail-button">
+    <form action="/owner/mail" method="get">
+        <button>お知らせメール送信</button>
+    </form>
+</div>
 @endsection

@@ -12,7 +12,7 @@
             <h2>{{ $shop->name }}</h2>
         </div>
         <div class="shop__img">
-            <img src="{{ $shop->image}}" alt="">
+            <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
         </div>
         <div class="shop__tag">
             <span>#{{ $shop->area->name }}</span>

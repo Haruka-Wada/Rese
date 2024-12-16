@@ -12,7 +12,7 @@
             <h2>{{ $reservation->shop->name }}をレビュー</h2>
         </div>
         <div class="shop__img">
-            <img src="{{ $reservation->shop->image}}" alt="">
+            <img src="{{ $reservation->$shop->image }}" alt="{{ $shop->name }}">
         </div>
         <div class="shop__tag">
             <span>#{{ $reservation->shop->area->name }}</span>

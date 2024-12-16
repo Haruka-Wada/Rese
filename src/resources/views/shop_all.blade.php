@@ -34,7 +34,7 @@
     @foreach($shops as $shop)
     <div class="card" id="{{ $shop->id }}">
         <div class="card__img">
-            <img src="{{ $shop->image }}">
+            <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
         </div>
         <div class="card__content">
             <div class="card__content-name">

@@ -17,6 +17,7 @@
     border: 1px solid #305DFF;
     border-radius: 3px;
     padding: 10px 20px;
+    margin-left: 10px;
 }
 
 .form__container {
@@ -95,4 +96,20 @@ input::placeholder {
     color: red;
     font-size: 14px;
     text-align: center;
+}
+
+.mail-button {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.mail-button button {
+    background-color: #305DFF;
+    color: white;
+    border: 1px solid #305DFF;
+    border-radius: 3px;
+    padding: 10px 20px;
 }

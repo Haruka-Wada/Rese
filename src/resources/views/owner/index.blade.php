@@ -6,6 +6,7 @@
 
 @section('button')
 <div class="logout">
+    <button onclick="location.href='/'">HOME</button>
     <form action="owner/logout" method="post">
         @csrf
         <button>Logout</button>
@@ -24,11 +25,7 @@
     @foreach($shops as $shop)
     <div class="card" id="{{ $shop->id }}">
         <div class="card__img">
-            @if($shop->id <= 20)
-            <img src="{{ $shop->image }}">
-            @elseif($shop->id >= 21)
-            <img src="{{ \Storage::url($shop->image) }}">
-            @endif
+            <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
         </div>
         <h2>{{ $shop->name }}</h2>
         <div class="card__content">
