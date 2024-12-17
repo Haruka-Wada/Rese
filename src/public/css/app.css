@@ -3,6 +3,13 @@ body {
     width: 100vw;
 }
 
+.header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 10;
+}
+
 .header__wrapper {
     width: 90%;
     height: 60px;
@@ -11,9 +18,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px 0;
-    padding-left: 60px;
-    position: fixed;
-    z-index: 10;
     background-color: whitesmoke;
 }
 
@@ -69,7 +73,7 @@ body {
     color: #305DFF;
     font-size: 30px;
     position: fixed;
-    left: 130px;
+    left: 150px;
     transition: 0.5s;
 }
 
@@ -151,6 +155,6 @@ body {
     }
 
     .header__logo {
-        left: 60px;
+        left: 80px;
     }
 }

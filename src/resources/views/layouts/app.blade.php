@@ -13,8 +13,7 @@
 </head>
 
 <body>
-
-    <header>
+    <header class="header">
         <div class="header__wrapper">
             <button class="header__nav" onclick="navFunc()"></button>
             <nav class="header__hamburger">

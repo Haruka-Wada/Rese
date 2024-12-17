@@ -4,16 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/admin/index.css') }}">
 @endsection
 
-@section('button')
-<div class="logout">
-    <button onclick="location.href='/'">HOME</button>
-    <form action="/logout" method="post">
-        @csrf
-        <button>Logout</button>
-    </form>
-</div>
-@endsection
-
 @section('main')
 <div class="form__container">
     <div class="form__title">

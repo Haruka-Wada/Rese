@@ -1,5 +1,11 @@
 .header__wrapper {
     width: 40%;
+    margin: 0;
+    margin-left: 50px;
+}
+
+.header__logo {
+    left: 120px;
 }
 
 .main {
@@ -149,6 +155,11 @@
 
     .header__wrapper {
         width: 90%;
+        margin: 0;
+    }
+
+    .header__logo {
+        left: 90px;
     }
 
     .main__container {
@@ -204,8 +215,17 @@
 
 @media screen and (max-width:480px){
     .header__wrapper {
-        width: 100%;
+        width: 90%;
         padding: 0;
+        margin: 0 auto;
+    }
+
+    .header__logo {
+        left: 80px;
+    }
+
+    .main {
+        padding-top: 100px;
     }
 
     .reservation__confirm-item {

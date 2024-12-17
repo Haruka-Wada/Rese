@@ -5,12 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/admin/login.css') }}">
 @endsection
 
-@section('button')
-<div class="home-button">
-    <button onclick="location.href='/'">HOME</button>
-</div>
-@endsection
-
 @section('main')
 <div class="form__container">
     <div class="form__title">

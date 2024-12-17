@@ -1,7 +1,3 @@
-.header__nav {
-    display: none;
-}
-
 .back {
     width: 80%;
     height: 50px;
@@ -17,10 +13,11 @@
     border: 1px solid #305DFF;
     border-radius: 3px;
     padding: 10px 20px;
+    margin-left: 10px;
 }
 
 .create__container {
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
 }
 
