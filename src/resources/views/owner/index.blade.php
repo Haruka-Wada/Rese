@@ -51,31 +51,33 @@
     </div>
     @endforeach
 </div>
-<div class="reservation__contents">
-    <div class="main__title">
-        <h2>予約情報</h2>
-    </div>
-    <div class="reservation__table">
-        <table>
-            <tr>
-                <th>店舗名</th>
-                <th>名前</th>
-                <th>メールアドレス</th>
-                <th>日時</th>
-                <th>人数</th>
-            </tr>
-            @foreach($shops as $shop)
-            @foreach($shop->getReservation() as $reservation)
-            <tr>
-                <td>{{ $shop->name }}</td>
-                <td>{{ $reservation->user->name }}</td>
-                <td>{{ $reservation->user->email }}</td>
-                <td>{{$reservation->date->format('Y/m/d')}} {{ $reservation->time->format('H:i')}}</td>
-                <td>{{ $reservation->number }}人</td>
-            </tr>
-            @endforeach
-            @endforeach
-        </table>
+<div class="main__contents">
+    <div class="reservation__contents">
+        <div class="main__title">
+            <h2>予約情報</h2>
+        </div>
+        <div class="reservation__table">
+            <table>
+                <tr class="reservation__table-head">
+                    <th>店舗名</th>
+                    <th>名前</th>
+                    <th>メールアドレス</th>
+                    <th>日時</th>
+                    <th>人数</th>
+                </tr>
+                @foreach($shops as $shop)
+                @foreach($shop->getReservation() as $reservation)
+                <tr>
+                    <td>{{ $shop->name }}</td>
+                    <td>{{ $reservation->user->name }}</td>
+                    <td>{{ $reservation->user->email }}</td>
+                    <td>{{$reservation->date->format('Y/m/d')}} {{ $reservation->time->format('H:i')}}</td>
+                    <td>{{ $reservation->number }}人</td>
+                </tr>
+                @endforeach
+                @endforeach
+            </table>
+        </div>
     </div>
 </div>
 @endsection

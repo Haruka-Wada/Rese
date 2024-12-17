@@ -81,7 +81,7 @@
                 @foreach($favorites as $favorite)
                 <div class="favorite__card">
                     <div class="favorite__card-img">
-                        <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
+                        <img src="{{ $favorite->shop->image }}" alt="{{ $favorite->shop->name }}">
                     </div>
                     <div class="favorite__card-content">
                         <div class="favorite__card-content-name">

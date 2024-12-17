@@ -113,3 +113,23 @@ input::placeholder {
     border-radius: 3px;
     padding: 10px 20px;
 }
+
+@media screen and (max-width:480px) {
+    .header__wrapper {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .header__logo {
+        left: 30px;
+    }
+
+    .logout button {
+        width: 60px;
+        padding: 10px 0;
+    }
+
+    .form__container {
+        width: 80%;
+    }
+}

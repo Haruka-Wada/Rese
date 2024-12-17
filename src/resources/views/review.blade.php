@@ -12,7 +12,7 @@
             <h2>{{ $reservation->shop->name }}をレビュー</h2>
         </div>
         <div class="shop__img">
-            <img src="{{ $reservation->$shop->image }}" alt="{{ $shop->name }}">
+            <img src="{{ $reservation->shop->image }}" alt="{{ $reservation->shop->name }}">
         </div>
         <div class="shop__tag">
             <span>#{{ $reservation->shop->area->name }}</span>
@@ -20,6 +20,12 @@
         </div>
         <div class="shop__outline">
             <p>{{ $reservation->shop->outline }}</p>
+        </div>
+        <div class="shop__stripe">
+            <form action="{{ route('checkout.session') }}" method="get">
+                @csrf
+                <button class="checkout__button">購入画面へ</button>
+            </form>
         </div>
     </div>
     <div class="review__container">

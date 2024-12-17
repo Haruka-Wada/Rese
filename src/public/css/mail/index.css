@@ -50,3 +50,18 @@
     color: #305DFF;
     text-align: center;
 }
+
+@media screen and (max-width:480px) {
+    .header__wrapper {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .header__logo {
+        left: 30px;
+    }
+    
+    .main__container textarea {
+        width: 90%;
+    }
+}

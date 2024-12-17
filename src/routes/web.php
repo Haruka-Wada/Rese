@@ -3,9 +3,11 @@
 use App\Http\Controllers\ReseController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Owner;
+use App\Http\Controllers\StripeController;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\GlobalState\Restorer;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,9 @@ Route::middleware(['verified'])->group(function(){
         Route::patch('/edit/update', [ReseController::class, 'reservationUpdate']);
         Route::get('/review', [ReseController::class, 'review']);
         Route::post('/score', [ReseController::class, 'score']);
+        Route::get('/success', [StripeController::class, 'success'])->name('success');
+        Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
+        Route::get('/checkout-payment', [StripeController::class, 'checkout'])->name('checkout.session');
     });
 });
 

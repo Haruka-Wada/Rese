@@ -12,7 +12,7 @@
             <h2>{{ $reservation->shop->name }}</h2>
         </div>
         <div class="shop__img">
-            <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
+            <img src="{{ $reservation->shop->image }}" alt="{{ $reservation->shop->name }}">
         </div>
         <div class="shop__tag">
             <span>#{{ $reservation->shop->area->name }}</span>

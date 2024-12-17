@@ -55,6 +55,14 @@ class ReseController extends Controller
         return view('shop_detail', compact('shop'));
     }
 
+    public function myPage() {
+        $user_id = Auth::id();
+        $reservations = Reservation::with('shop')->where('user_id', $user_id)->get();
+        $favorites = Favorite::with('shop')->where('user_id', $user_id)->get();
+        return view('my_page', compact('reservations', 'favorites'));
+    }
+
+    //予約機能
     public function reservation(ReservationRequest $request) {
         $user_id = Auth::id();
         $shop_id = $request->shop_id;
@@ -93,6 +101,7 @@ class ReseController extends Controller
         return redirect('/mypage');
     }
 
+    //お気に入り機能
     public function favorite(Request $request) {
         $user_id = Auth::id();
         $shop_id = $request->shop_id;
@@ -110,13 +119,7 @@ class ReseController extends Controller
         return back();
     }
 
-    public function myPage() {
-        $user_id = Auth::id();
-        $reservations = Reservation::with('shop')->where('user_id', $user_id)->get();
-        $favorites = Favorite::with('shop')->where('user_id', $user_id)->get();
-        return view('my_page', compact('reservations', 'favorites'));
-    }
-
+    //レビュー機能
     public function review(Request $request) {
         $reservation = Reservation::find($request->reservation);
         return view('review', compact('reservation'));

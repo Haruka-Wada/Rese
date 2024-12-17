@@ -19,8 +19,9 @@ class Authenticate extends Middleware
                 return route('admin.loginView');
             }elseif($request->is('owner')) {
                 return route('owner.loginView');
+            }else{
+                return route('login');
             }
-            return route('login');
         }
     }
 }

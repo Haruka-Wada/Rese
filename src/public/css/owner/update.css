@@ -3,7 +3,7 @@
 }
 
 .header__wrapper {
-    width: 35%;
+    width: 40%;
 }
 
 .main {
@@ -147,7 +147,7 @@
     }
 
     .header__wrapper {
-        width: 90%;
+        width: 95%;
         padding: 20px;
     }
 
@@ -179,7 +179,8 @@
     .update__name,
     .update__area,
     .update__genre,
-    .update__outline
+    .update__outline,
+    .update__image
     {
         margin: 0 0 10px;
     }

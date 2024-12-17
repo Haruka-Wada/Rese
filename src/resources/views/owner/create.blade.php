@@ -6,7 +6,7 @@
 
 @section('button')
 <div class="back">
-    <button onclick="location.href='/owner'">戻る</button>
+    <button onclick="location.href='/owner'">Back</button>
 </div>
 @endsection
 

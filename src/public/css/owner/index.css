@@ -108,7 +108,7 @@ h2{
 }
 
 .reservation__contents {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -140,10 +140,11 @@ h2{
 @media screen and (max-width:768px) {
     .main__title {
         width: 50%;
+        padding: 10px 30px;
     }
 
     .main__contents {
-        padding: 0 30px;
+        padding: 0 10px;
         justify-content: space-between;
     }
 
@@ -152,12 +153,13 @@ h2{
     }
 
     .reservation__contents {
-        width: 95%;
-        padding: 0 30px;
+        width: 100%;
     }
 
     .reservation__table th {
         font-size: 16px;
+        padding-right: 0;
+        padding-left: 10px;
     }
 
     .reservation__table th:nth-child(2) {
@@ -166,15 +168,45 @@ h2{
 
     .reservation__table td {
         font-size: 14px;
+        padding: 15px 10px;
     }
 }
 
 @media screen and (max-width:480px){
+    .header__logo {
+        left: 30px;
+    }
+
+    .logout button{
+        width: 60px;
+        padding: 10px 0;
+    }
+
     .main__contents {
         justify-content: center;
     }
 
     .card {
         width: 90%;
+        margin-right: 0;
+    }
+
+    .reservation__table {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .reservation__table-head {
+        display: none;
+    }
+
+    .reservation__table td {
+        display: block;
+        width: 80%;
+        padding: 5px 15px;
+    }
+
+    .reservation__table tr {
+        margin-bottom: 40px;
     }
 }
