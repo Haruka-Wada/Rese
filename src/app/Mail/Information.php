@@ -29,8 +29,8 @@ class Information extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.text')
+        return $this->view('mail.information')
                     ->subject('Reseからのお知らせ')
-                    ->with('date', $this->data);
+                    ->with('data', $this->data);
     }
 }
