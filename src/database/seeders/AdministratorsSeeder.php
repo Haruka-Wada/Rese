@@ -26,21 +26,7 @@ class AdministratorsSeeder extends Seeder
                 'password' => Hash::make('pass0001'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()
-            ],
-            [
-                'name' => 'hoge02',
-                'email' => 'admin002@example.com',
-                'password' => Hash::make('pass0002'),
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime()
-            ],
-            [
-                'name' => 'hoge03',
-                'email' => 'admin003@example.com',
-                'password' => Hash::make('pass0003'),
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime()
-            ],
+            ]
         ]);
     }
 }

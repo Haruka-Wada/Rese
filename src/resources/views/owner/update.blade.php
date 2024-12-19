@@ -27,7 +27,7 @@
             <div class="update__title">
                 <h2>更新</h2>
             </div>
-            <form action="/owner/update" method="post" id="update">
+            <form action="/owner/update" method="post" id="update" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <div class="update__form">
@@ -53,6 +53,11 @@
                     <input type="file" name="image" class="update__image">
                 </div>
             </form>
+            <div class="error">
+                @foreach ($errors->all() as $error)
+                <li>※{{$error}}</li>
+                @endforeach
+            </div>
         </div>
         <div class="update__button">
             <button form="update">更新する</button>

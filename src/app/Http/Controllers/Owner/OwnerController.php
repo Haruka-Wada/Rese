@@ -9,6 +9,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Http\Requests\ShopRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class OwnerController extends Controller
 {
@@ -27,12 +28,20 @@ class OwnerController extends Controller
         return view('owner.update', compact('shop', 'areas', 'genres'));
     }
 
-    public function update(Request $request)
+    public function update(ShopRequest $request)
     {
         $shop = Shop::find($request->shop_id);
+        $image = $request->file('image');
+        $path = $shop->image;
+        if(isset($image)) {
+            Storage::disk('public')->delete($path);
+            $path = $image->store('image', 'public');
+        }
+        $full_path = asset('storage/' .$path);
+
         $shop->update([
             'name' => $request->name,
-            'image' => $request->image,
+            'image' => $full_path,
             'area' => $request->area,
             'genre' => $request->genre,
             'outline' => $request->outline
