@@ -1,5 +1,11 @@
 .header__wrapper {
-    width: 35%;
+    width: 40%;
+    margin: 0;
+    margin-left: 50px;
+}
+
+.header__logo {
+    left: 120px;
 }
 
 .main {

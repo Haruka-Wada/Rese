@@ -116,9 +116,6 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null  
 MAIL_FROM_ADDRESS="rese@example.com"  
 MAIL_FROM_NAME="${APP_NAME}"  
-
-STRIPE_KEY=pk_test_51QWrFuFZPeEzOxnh5M4VmsK8zaKBF4JiSePQMMhsw45E4JWuBDFu4iiz8aORNBSOhO5S5LpxhbybFsjJzpTLONkF00FqMvcVFi
-STRIPE_SECRET=sk_test_51QWrFuFZPeEzOxnhfTI4whtcQS8U2AiuuyVkbJV9WwFbffcYjizy5hmkauYiIodKQz7LaN2TmuPy2aA9jTBMNErP00KXwzn8io
 ```
 4. アプリケーションキーの作成
 ```bash
@@ -132,5 +129,8 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
-7. その他
-
+7. その他  
+リマインダー機能の設定にはcronに下記の記入が必要です。
+```text
+cd /home/プロジェクトのパス/ && /usr/bin/php7.4.9 artisan schedule:run >> /dev/null 2>&1
+```
