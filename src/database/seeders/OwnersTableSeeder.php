@@ -17,8 +17,6 @@ class OwnersTableSeeder extends Seeder
      */
     public function run()
     {
-        Owner::truncate();
-
         DB::table('owners')->insert([
             [
                 'name' => 'hoge01',
