@@ -23,4 +23,12 @@ class Reservation extends Model
     public function shop() {
         return $this->belongsTo(Shop::class);
     }
+
+    public function format($reservation) {
+        $text = "氏名：".$reservation->user->name."\n".
+                "メールアドレス：".$reservation->user->email."\n".
+                "日時：".$reservation->date->format('Y-m-d')." ".$reservation->time->format('H:i')."\n".
+                "人数：".$reservation->number."名様";
+        return $text;
+    }
 }

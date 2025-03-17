@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Models\Reservation;
 use App\Mail\ReminderMail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ReservationReminder extends Command
 {
@@ -44,7 +45,8 @@ class ReservationReminder extends Command
         $today = Carbon::today();
         $reservations = Reservation::where('date', '=', $today)->get();
         foreach ($reservations as $reservation) {
-            Mail::to($reservation->user)->send(new ReminderMail($reservation));
+            $qrCode = QrCode::size(200)->encoding('UTF-8')->generate($reservation->format($reservation));
+            Mail::to($reservation->user)->send(new ReminderMail($reservation, $qrCode));
         }
     }
 }

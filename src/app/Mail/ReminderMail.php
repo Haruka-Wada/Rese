@@ -11,15 +11,17 @@ class ReminderMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $reservation;
+    public $qrCode;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($reservation)
+    public function __construct($reservation, $qrCode)
     {
         $this->reservation = $reservation;
+        $this->qrCode = $qrCode;
     }
 
     /**
@@ -30,7 +32,7 @@ class ReminderMail extends Mailable
     public function build()
     {
         return $this->view('mail.reminder')
-                    ->with('reservation', $this->reservation)
+                    ->with('reservation','qrCode')
                     ->subject('予約当日のお知らせ');
     }
 }

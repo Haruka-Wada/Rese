@@ -4,6 +4,7 @@ use App\Http\Controllers\ReseController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Owner;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\QrCodeController;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\GlobalState\Restorer;
@@ -23,6 +24,7 @@ use Illuminate\Http\Request;
 Route::get('/', [ReseController::class, 'index']);
 Route::get('/detail/{shop_id?}', [ReseController::class, 'detail']);
 Route::get('/search', [ReseController::class, 'search']);
+Route::get('/test', [QrCodeController::class, 'test']);
 
 Route::middleware(['verified'])->group(function(){
     Route::middleware('auth')->group(function () {
