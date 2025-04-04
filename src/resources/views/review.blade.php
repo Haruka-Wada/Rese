@@ -8,33 +8,52 @@
 <div class="main__container">
     <div class="shop__container">
         <div class="shop__name-area">
-            <button onclick="location.href='/mypage'">&lt;</button>
-            <h2>{{ $reservation->shop->name }}をレビュー</h2>
+            <p>今回のご利用はいかがでしたか？</p>
         </div>
-        <div class="shop__img">
-            <img src="{{ $reservation->shop->image }}" alt="{{ $reservation->shop->name }}">
-        </div>
-        <div class="shop__tag">
-            <span>#{{ $reservation->shop->area->name }}</span>
-            <span>#{{ $reservation->shop->genre->name }}</span>
-        </div>
-        <div class="shop__outline">
-            <p>{{ $reservation->shop->outline }}</p>
-        </div>
-        <div class="shop__stripe">
-            <form action="{{ route('checkout.session') }}" method="get">
-                @csrf
-                <button class="checkout__button">購入画面へ</button>
-            </form>
+        <div class="card" id="{{ $shop->id }}">
+            <div class="card__img">
+                <img src="{{ $shop->image }}" alt="{{ $shop->name }}">
+            </div>
+            <div class="card__content">
+                <div class="card__content-name">
+                    <h2>{{ $shop->name }}</h2>
+                </div>
+                <div class="card__content-tag">
+                    <span class="card__content-tag-area">#{{ $shop->area->name }}</span>
+                    <span class="card__content-tag-area">#{{ $shop->genre->name }}</span>
+                </div>
+                <div class="card__content-detail">
+                    <div class="card__content-detail-link">
+                        <form action="/detail/" method="get">
+                            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                            <button>詳しくみる</button>
+                        </form>
+                    </div>
+                    <div class="card__content-detail-fav">
+                        @auth
+                        @if(!$shop->isLikedBy(Auth::user()))
+                        <img class="like-toggle" src=" {{ asset('img/heart.png') }}" alt="お気に入りボタン" data-shop-id="{{ $shop->id }}">
+                        @else
+                        <img class="like-toggle liked" src="{{ asset('img/heart.png') }}" alt="お気に入りボタン" data-shop-id="{{ $shop->id }}">
+                        @endif
+                        @endauth
+                    </div>
+                    @guest
+                    <div class="card__content-detail-fav">
+                        <a href="/login"><img src="{{ asset('img/heart.png') }}" alt="お気に入りボタン"></a>
+                    </div>
+                    @endguest
+                </div>
+            </div>
         </div>
     </div>
     <div class="review__container">
         <div class="review__wrap">
-            <div class="review__title">総合評価</div>
+            <div class="review__title">体験を評価してください</div>
             <form action="/score" method="post" id="review">
                 @csrf
                 <div class="review__form">
-                    <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
+                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     @for($i = 5; $i > 0 ; $i--)
                     <input type="radio" name="rating" class="review__score" id="rating{{$i}}" value="{{$i}}">
                     <label class="review__score-label" for="rating{{$i}}"><img src="{{asset('img/star.png')}}" alt="rating"></label>
@@ -45,8 +64,8 @@
                     {{ $message }}
                     @enderror
                 </div>
-                <p class="review__title">コメント</p>
-                <textarea class="review__comment" name="comment" placeholder="店舗へのコメントを記入してください。"></textarea>
+                <p class="review__title">口コミを投稿</p>
+                <textarea class="review__comment" name="comment" placeholder="カジュアルな夜のお出かけににおすすめのスポット"></textarea>
                 <div class="review__error">
                     @error('comment')
                     {{ $message }}
@@ -60,7 +79,5 @@
     </div>
 </div>
 
-<script type="text/javascript">
-
-</script>
+<script src="{{ asset('js/favorite.js') }}"></script>
 @endsection

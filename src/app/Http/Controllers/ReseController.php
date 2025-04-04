@@ -52,7 +52,8 @@ class ReseController extends Controller
 
     public function detail(Request $request) {
         $shop = Shop::find($request->shop_id);
-        return view('shop_detail', compact('shop'));
+        $afterReservation = Reservation::afterReservation(Auth::id(), $request->shop_id);
+        return view('shop_detail', compact('shop', 'afterReservation'));
     }
 
     public function myPage() {
@@ -121,8 +122,8 @@ class ReseController extends Controller
 
     //レビュー機能
     public function review(Request $request) {
-        $reservation = Reservation::find($request->reservation);
-        return view('review', compact('reservation'));
+        $shop = Shop::find($request->shop_id);
+        return view('review', compact('shop'));
     }
 
     public function score(ReviewRequest $request) {

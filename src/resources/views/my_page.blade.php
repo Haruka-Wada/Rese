@@ -57,9 +57,9 @@
                             <button>変更</button>
                         </form>
                         @else
-                        <form action="/review" method="get">
-                            <input type="hidden" name="reservation" value="{{$reservation->id}}">
-                            <button>レビュー投稿</button>
+                        <form action="{{ route('checkout.session') }}" method="get">
+                            @csrf
+                            <button class="checkout__button">購入画面へ</button>
                         </form>
                         @endif
                     </div>

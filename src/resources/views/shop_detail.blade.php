@@ -21,6 +21,14 @@
         <div class="shop__outline">
             <p>{{ $shop->outline }}</p>
         </div>
+        @if($afterReservation)
+        <div class="shop__review">
+            <form action="/review" method="get">
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                <button class="shop__review-button">口コミを投稿する</button>
+            </form>
+        </div>
+        @endif
     </div>
     <div class="reservation__container">
         <div class="reservation__wrap">
