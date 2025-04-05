@@ -12,8 +12,8 @@ use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\ReviewRequest;
+use Illuminate\Support\Facades\Storage;
 
-use function PHPUnit\Framework\returnCallback;
 
 class ReseController extends Controller
 {
@@ -53,7 +53,9 @@ class ReseController extends Controller
     public function detail(Request $request) {
         $shop = Shop::find($request->shop_id);
         $afterReservation = Reservation::afterReservation(Auth::id(), $request->shop_id);
-        return view('shop_detail', compact('shop', 'afterReservation'));
+        $reviewed = Review::reviewed(Auth::id(), $request->shop_id);
+        $reviews = Review::where('shop_id', $request->shop_id)->get();
+        return view('shop_detail', compact('shop', 'afterReservation', 'reviewed', 'reviews'));
     }
 
     public function myPage() {
@@ -123,15 +125,66 @@ class ReseController extends Controller
     //レビュー機能
     public function review(Request $request) {
         $shop = Shop::find($request->shop_id);
-        return view('review', compact('shop'));
+        $reviewed = Review::reviewed(Auth::id(),  $request->shop_id);
+        return view('review', compact('shop', 'reviewed'));
     }
 
     public function score(ReviewRequest $request) {
+        $image = $request->file('image');
+        $path = isset($image) ? $image->store('review', 'public') : '';
+        $full_path = asset('storage/' . $path);
+
         Review::create([
-            'reservation_id' => $request->reservation_id,
+            'shop_id' => $request->shop_id,
+            'user_id' => Auth::id(),
             'rating' => $request->rating,
-            'comment' => $request->comment
+            'comment' => $request->comment,
+            'image' => $full_path
         ]);
-        return redirect('/mypage');
+
+        return redirect(route('rese.detail',[
+            'shop_id' => $request->shop_id
+        ]));
+    }
+
+    public function reviewEdit(Request $request) {
+        $shop = Shop::find($request->shop_id);
+        $reviewed = Review::reviewed(Auth::id(), $request->shop_id);
+        return view('review_edit', compact('shop', 'reviewed'));
+    }
+
+    public function reviewUpdate(Request $request) {
+        $this->validate($request, Review::$rules);
+        $reviewed = Review::reviewed(Auth::id(), $request->shop_id);
+        $reviewed->update([
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+        ]);
+
+        if($request->image) {
+            //ストレージに保存されている画像削除
+            $old_image = basename($reviewed->image);
+            Storage::disk('public')->delete('review/' . $old_image);
+            //新たに保存
+            $image = $image = $request->file('image');
+            $path = isset($image) ? $image->store('review', 'public') : '';
+            $full_path = asset('storage/' . $path);
+
+            $reviewed->update([
+                'image' => $full_path
+            ]);
+        }
+
+        return redirect(route('rese.detail', [
+            'shop_id' => $request->shop_id
+        ]));
+    }
+
+    public function reviewDelete(Request $request) {
+        $reviewed = Review::reviewed($request->user_id, $request->shop_id);
+        $reviewed_image = basename($reviewed->image);
+        Storage::disk('public')->delete('review/' . $reviewed_image);
+        $reviewed->delete();
+        return back()->with('message', '口コミを削除しました');
     }
 }

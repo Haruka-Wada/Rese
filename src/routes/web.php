@@ -22,9 +22,10 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [ReseController::class, 'index']);
-Route::get('/detail/{shop_id?}', [ReseController::class, 'detail']);
+Route::get('/detail/{shop_id?}', [ReseController::class, 'detail'])->name('rese.detail');
 Route::get('/search', [ReseController::class, 'search']);
 Route::get('/test', [QrCodeController::class, 'test']);
+Route::post('review/delete', [ReseController::class, 'reviewDelete']);
 
 Route::middleware(['verified'])->group(function(){
     Route::middleware('auth')->group(function () {
@@ -38,6 +39,8 @@ Route::middleware(['verified'])->group(function(){
         Route::patch('/edit/update', [ReseController::class, 'reservationUpdate']);
         Route::get('/review', [ReseController::class, 'review']);
         Route::post('/score', [ReseController::class, 'score']);
+        Route::get('/review/edit', [ReseController::class, 'reviewEdit']);
+        Route::post('/score/update', [ReseController::class, 'reviewUpdate']);
         Route::get('/success', [StripeController::class, 'success'])->name('success');
         Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
         Route::get('/checkout-payment', [StripeController::class, 'checkout'])->name('checkout.session');

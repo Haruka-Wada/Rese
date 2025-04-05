@@ -26,15 +26,22 @@ class ReviewRequest extends FormRequest
     {
         return [
             'rating' => 'required',
-            'comment' => 'required'
+            'comment' => 'required|string|max:400',
+            'image' => 'required|file|mimes:jpeg,png|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000'
         ];
     }
 
     public function messages()
     {
         return [
-            'rating.required' => '総合評価は必ず入力してください',
-            'comment.required' => 'コメントは必ず入力してください'
+            'rating.required' => '評価は必ず入力してください',
+            'comment.required' => 'コメントは必ず入力してください',
+            'comment.string' => 'コメントは文字列で入力してください',
+            'comment.max' => '文字数は400文字以内で入力してください',
+            'image.required' => '画像を選択してください',
+            'image.file' => 'ファイルを指定してください',
+            'image.mimes' => 'jpeg,pngを指定してください',
+            'image.dimensions' => '画像サイズが無効です'
         ];
     }
 }

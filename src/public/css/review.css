@@ -17,11 +17,12 @@
 }
 
 .shop__name-area {
-    padding: 80px 0 30px;
+    width: 80%;
+    padding: 80px 0 60px;
+    margin: 0 auto;
 }
 
 .shop__name-area p {
-    padding: 0 30px;
     font-size: 40px;
 }
 
@@ -88,18 +89,18 @@
 
 .review__container {
     width: 100%;
-    height: 90%;
     grid-row: 2/3;
     grid-column: 2/3;
 }
 
 .review__wrap {
-    
+    width: 80%;
+    margin: 0 auto;
 }
 
 .review__title {
     color: #000000;
-    margin: 20px 0 10px;
+    margin: 20px 0 15px;
     font-size: 24px;
 }
 
@@ -107,7 +108,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .review__score {
@@ -128,14 +129,52 @@
 .review__score-label:hover,
 .review__score-label:hover ~ .review__score-label,
 .review__score:checked ~.review__score-label{
-    filter: brightness(0) saturate(100%) invert(67%) sepia(15%) saturate(3827%) hue-rotate(4deg) brightness(106%) contrast(98%);
+    filter: brightness(0) saturate(100%) invert(16%) sepia(93%) saturate(6919%) hue-rotate(237deg) brightness(105%) contrast(113%);
 }
 
 .review__comment {
-    width: 85%;
-    height: 150px;
+    width: 100%;
+    height: 180px;
     padding: 10px;
     background-color: inherit;
+    box-sizing: border-box;
+}
+
+.comment__counter {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.review__image {
+    width: 100%;
+    height: 180px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review__image-upload {
+    display: none;
+}
+
+.review__image-button {
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.reviewed__image {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.reviewed__image img {
+    width: 100%;
 }
 
 .review__button {
@@ -144,24 +183,24 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    margin: 40px auto 20px;
+    margin: 50px auto 20px;
     text-align: center;
 }
 
 .review__button button {
     width: 50%;
     height: 100%;
-    font-size: 16px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    background-color: #0438FF;
-    color: white;
+    border-radius: 50px;
+    background-color: white;
+    color: black;
 }
 
 .review__error {
     color: red;
     font-size: 14px;
-    margin: 20px;
+    margin: 20px 0;
 }
 
 @media screen and (max-width:768px) {
