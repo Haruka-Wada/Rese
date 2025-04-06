@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="review__container">
-        <div class="review__wrap">
+        <div class="review__wrapper">
             <div class="review__title">体験を評価してください</div>
             <div class="review__error">
                 @error('rating')

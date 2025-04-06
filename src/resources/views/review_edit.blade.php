@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="review__container">
-        <div class="review__wrap">
+        <div class="review__wrapper">
             <div class="review__title">体験を評価してください</div>
             <form action="/score/update" method="post" id="review" enctype="multipart/form-data">
                 @csrf

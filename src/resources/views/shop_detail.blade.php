@@ -38,45 +38,47 @@
                 {{ session('message') }}
             </div>
             @endif
-            @foreach($reviews as $review)
             <div class="review__container">
-                @if($review->user_id === Auth::id())
-                <div class="review__edit">
-                    <form action="/review/edit" method="get">
-                        <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
-                        <button class="review__edit-button">口コミを編集</button>
-                    </form>
-                    <form action="/review/delete" method="post">
-                        @csrf
-                        <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
-                        <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-                        <button class="review__edit-button">口コミを削除</button>
-                    </form>
+                @foreach($reviews as $review)
+                <div class="review__wrap">
+                    @if($review->user_id === Auth::id())
+                    <div class="review__edit">
+                        <form action="/review/edit" method="get">
+                            <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
+                            <button class="review__edit-button">口コミを編集</button>
+                        </form>
+                        <form action="/review/delete" method="post">
+                            @csrf
+                            <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
+                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                            <button class="review__edit-button">口コミを削除</button>
+                        </form>
+                    </div>
+                    @endif
+                    @if(Auth::guard('administrators')->check())
+                    <div class="review__edit">
+                        <form action="/review/delete" method="post">
+                            @csrf
+                            <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
+                            <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                            <button class="review__edit-button">口コミを削除</button>
+                        </form>
+                    </div>
+                    @endif
+                    <div class="review__rating">
+                        @for($i = 0; $i < $review->rating ; $i++)
+                            <img src="{{asset('img/star.png')}}" alt="rating" class="rating-star">
+                            @endfor
+                    </div>
+                    <div class="review__comment">
+                        <p>{{ $review->comment }}</p>
+                    </div>
+                    <div class="review__image">
+                        <img src="{{ $review->image }}" alt="口コミの画像">
+                    </div>
                 </div>
-                @endif
-                @if(Auth::guard('administrators')->check())
-                <div class="review__edit">
-                    <form action="/review/delete" method="post">
-                        @csrf
-                        <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
-                        <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-                        <button class="review__edit-button">口コミを削除</button>
-                    </form>
-                </div>
-                @endif
-                <div class="review__rating">
-                    @for($i = 0; $i < $review->rating ; $i++)
-                        <img src="{{asset('img/star.png')}}" alt="rating" class="rating-star">
-                        @endfor
-                </div>
-                <div class="review__comment">
-                    <p>{{ $review->comment }}</p>
-                </div>
-                <div class="review__image">
-                    <img src="{{ $review->image }}" alt="口コミの画像">
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
     <div class="reservation__container">

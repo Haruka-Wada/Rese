@@ -86,7 +86,13 @@
 }
 
 .review__container {
+    max-height: 600px;
+    overflow: scroll;
+}
+
+.review__wrap {
     border-top: solid 1px lightgray;
+    margin-bottom: 20px;
 }
 
 .review__edit {
@@ -103,7 +109,7 @@
 }
 
 .review__rating {
-    margin: 10px 0;
+    margin: 10px;
 }
 
 .rating-star {
@@ -111,7 +117,7 @@
 }
 
 .review__comment {
-    margin: 10px;
+    margin: 10px 5px;
 }
 
 .review__image {
@@ -139,9 +145,15 @@
 }
 
 .reservation__title {
+    width: 85%;
     color: white;
-    padding: 20px;
     font-size: 24px;
+    margin: 20px auto;
+}
+
+.reservation__form {
+    width: 85%;
+    margin: 0 auto;
 }
 
 .reservation__date {
@@ -150,7 +162,7 @@
     border: none;
     border-radius: 3px;
     padding-left: 10px;
-    margin: 15px 20px;
+    margin: 15px 0;
 }
 
 .reservation__time, .reservation__number{
@@ -159,7 +171,7 @@
     border: none;
     border-radius: 3px;
     padding-left: 10px;
-    margin: 0 20px 15px;
+    margin: 0 auto 15px;
     box-sizing: border-box;
 }
 
@@ -168,8 +180,9 @@
     background-color: #4D7EFF;
     border-radius: 3px;
     color: white;
-    margin: 0 20px 50px;
+    margin: 0 auto 50px;
     padding: 30px 20px;
+    box-sizing: border-box;
 }
 
 .reservation__confirm-list {
@@ -225,40 +238,33 @@
 
     .main__container {
         display: block;
-        padding: 0 30px;
     }
 
     .shop__container {
         width: 90%;
-        margin: 0;
+        margin: 0 auto;
+    }
+
+    .shop__review {
+        width: 90%;
+        margin: 0 auto;
     }
 
     .reservation__container {
-        width: 100%;
-        padding-top: 30px;
-        margin-top: 30px;
+        width: 90%;
+        padding-top: 0;
+        margin: 30px auto;
     }
 
     .reservation__wrap {
-        padding: 20px 20px 50px;
+        width: 100%;
         margin: 0;
-    }
-
-    .reservation__title {
-        padding: 20px 0;
-    }
-
-    .reservation__date {
-        width: 90%;
-        margin: 10px 0;
+        position: static;
+        box-sizing: border-box;
     }
 
     .reservation__time, .reservation__number {
-        margin: 0 0 10px;
-    }
-
-    .reservation__confirm {
-        margin: 0;
+        width: 85%;
     }
 
     .reservation__confirm-item {
@@ -267,10 +273,6 @@
 
     .reservation__confirm-content {
         width: 70%;
-    }
-
-    .reservation__button {
-        margin: 0 0 20px;
     }
 }
 
