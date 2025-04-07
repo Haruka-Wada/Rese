@@ -18,32 +18,18 @@ use Illuminate\Support\Facades\Storage;
 class ReseController extends Controller
 {
     public function index() {
-        $shops = Shop::all();
+        $shops = Shop::inRandomOrder()->get();
         $areas = Area::all();
         $genres = Genre::all();
+        session()->flash('message', null);
         return view('shop_all', compact('areas', 'genres', 'shops'));
     }
 
     public function search(Request $request) {
         $query = Shop::query();
-        $query = $this->getSearchQuery($request, $query);
+        $query = Shop::getSearchQuery($request, $query);
         $shops = $query->get();
         return response()->json(['shops'=>$shops]);
-    }
-
-    public function getSearchQuery($request, $query) {
-        if (!empty($request->area_id)) {
-            $query->where('area_id', '=', $request->area_id);
-        }
-
-        if(!empty($request->genre_id)) {
-            $query->where('genre_id', '=', $request->genre_id);
-        }
-
-        if(!empty($request->keyword)) {
-            $query->where('name', 'like', '%'.$request->keyword.'%');
-        }
-        return $query;
     }
 
     public function thanks() {
@@ -186,5 +172,35 @@ class ReseController extends Controller
         Storage::disk('public')->delete('review/' . $reviewed_image);
         $reviewed->delete();
         return back()->with('message', '口コミを削除しました');
+    }
+
+    //ソート機能
+    public function sort(Request $request) {
+        if ($request->sort == "random") {
+            $shops = Shop::inRandomOrder()->get();
+            $no_reviews = [];
+            $sort = "ランダム";
+        } else {
+            if($request->sort == "desc") {
+                $query = Review::query();
+                $query = Review::getRatingAverages($query);
+                $rating_averages = $query->get()
+                                ->sortByDesc('rating_average');
+                $sort = "評価の高い順";
+            }elseif($request->sort == "asc") {
+                $query = Review::query();
+                $query = Review::getRatingAverages($query);
+                $rating_averages = $query->get()
+                    ->sortBy('rating_average');
+                $sort = "評価の低い順";
+            }
+            $shops = Shop::getShop($rating_averages);
+            $no_reviews = Shop::getNoReviews($shops);
+        }
+        $areas = Area::all();
+        $genres = Genre::all();
+        $text = "検索情報： " . $sort;
+        session()->flash('message', $text);
+        return view('shop_all', compact('shops', 'no_reviews', 'areas', 'genres',));
     }
 }

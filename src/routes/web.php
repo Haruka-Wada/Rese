@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
 Route::get('/', [ReseController::class, 'index']);
 Route::get('/detail/{shop_id?}', [ReseController::class, 'detail'])->name('rese.detail');
 Route::get('/search', [ReseController::class, 'search']);
+Route::get('/sort', [ReseController::class, 'sort']);
 Route::get('/test', [QrCodeController::class, 'test']);
 Route::post('review/delete', [ReseController::class, 'reviewDelete']);
 

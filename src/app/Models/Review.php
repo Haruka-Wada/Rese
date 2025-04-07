@@ -12,9 +12,8 @@ class Review extends Model
     protected $fillable = ['shop_id','user_id','rating','comment','image'];
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo(Reservation::class);
+    public function shop() {
+        return $this->belongsTo(Shop::class);
     }
 
     public function reviewed($user_id, $shop_id) {
@@ -26,4 +25,11 @@ class Review extends Model
         'comment' => 'required|string|max:400',
         'image' => 'file|mimes:jpeg,png|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000'
     );
+    
+    public function getRatingAverages($query) {
+        $query->select('shop_id')
+            ->selectRaw('AVG(rating) as rating_average')
+            ->groupBy('shop_id');
+        return $query;
+    }
 }

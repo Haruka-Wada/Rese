@@ -5,7 +5,7 @@ body {
 
 .header {
     width: 100%;
-    height: 60px;
+    height: 120px;
     position: fixed;
     z-index: 10;
 }
@@ -19,6 +19,11 @@ body {
     align-items: center;
     padding: 30px 0;
     background-color: whitesmoke;
+}
+
+.header__item {
+    display: flex;
+    align-items: center;
 }
 
 .header__nav {
@@ -72,9 +77,6 @@ body {
 .header__logo {
     color: #305DFF;
     font-size: 30px;
-    position: fixed;
-    left: 150px;
-    transition: 0.5s;
 }
 
 .header__hamburger {

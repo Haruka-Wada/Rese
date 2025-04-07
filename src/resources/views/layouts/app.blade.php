@@ -15,25 +15,27 @@
 <body>
     <header class="header">
         <div class="header__wrapper">
-            <button class="header__nav" onclick="navFunc()"></button>
-            <nav class="header__hamburger">
-                <ul class="hamburger__menu">
-                    <li><a href="/" class="hamburger__menu-link">HOME</a></li>
-                    @if(Auth::check())
-                    <li>
-                        <form action="/logout" method="post">
-                            @csrf
-                            <button class="hamburger__menu-logout">Logout</button>
-                        </form>
-                    </li>
-                    <li><a href="/mypage" class="hamburger__menu-link">Mypage</a></li>
-                    @else
-                    <li><a href="/register" class="hamburger__menu-link registration">Registration</a></li>
-                    <li><a href="/login" class="hamburger__menu-link">Login</a></li>
-                    @endif
-                </ul>
-            </nav>
-            <h1 class="header__logo">Rese</h1>
+            <div class="header__item">
+                <button class="header__nav" onclick="navFunc()"></button>
+                <nav class="header__hamburger">
+                    <ul class="hamburger__menu">
+                        <li><a href="/" class="hamburger__menu-link">HOME</a></li>
+                        @if(Auth::check())
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button class="hamburger__menu-logout">Logout</button>
+                            </form>
+                        </li>
+                        <li><a href="/mypage" class="hamburger__menu-link">Mypage</a></li>
+                        @else
+                        <li><a href="/register" class="hamburger__menu-link registration">Registration</a></li>
+                        <li><a href="/login" class="hamburger__menu-link">Login</a></li>
+                        @endif
+                    </ul>
+                </nav>
+                <h1 class="header__logo">Rese</h1>
+            </div>
             @yield('search')
             @yield('button')
         </div>
