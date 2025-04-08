@@ -37,10 +37,6 @@ class Shop extends Model
         return $query;
     }
 
-    public function review() {
-        return $this->hasMany(Review::class);
-    }
-
     public function sort($request, $query) {
         if($request->sort == "random") {
             $query->inRandomOrder();
@@ -55,6 +51,7 @@ class Shop extends Model
         }
     }
 
+    //お気に入り登録しているかどうか
     public function isLikedBy($user): bool {
         return favorite::where('user_id', $user->id)->where('shop_id', $this->id)->first() !==null;
     }
@@ -63,6 +60,7 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    //予約情報取得
     public function getReservation() {
         $reservations = Reservation::where('shop_id', '=', $this->id)->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
         return $reservations;
@@ -72,6 +70,7 @@ class Shop extends Model
         return $this->belongsToMany(User::class, 'reviews');
     }
 
+    //ショップごとの評価の平均値取得
     public function ratingAverage($shop_id) {
         $ratingAverage = Review::where('shop_id', $shop_id)
                 ->selectRaw('AVG(rating) as ratingAverage')
@@ -79,6 +78,7 @@ class Shop extends Model
         return $ratingAverage;
     }
 
+    //口コミの数を取得
     public function reviewCount() {
         $reviewCount = Review::where('shop_id', $this->id)->count();
         if($reviewCount === 0) {
@@ -87,6 +87,7 @@ class Shop extends Model
         return "(".$reviewCount."件)";
     }
 
+    //評価の順にショップを取得
     public function getShop($rating_averages) {
         $shops = [];
         foreach($rating_averages as $rating_average) {
@@ -95,6 +96,7 @@ class Shop extends Model
         return $shops;
     }
 
+    //評価のないショップの取得
     public function getNoReviews($shops) {
         $shop_id = [];
         foreach($shops as $shop) {
@@ -102,5 +104,28 @@ class Shop extends Model
         }
         $no_reviews = Shop::whereNotIn('id', $shop_id)->get();
         return $no_reviews;
+    }
+
+    //csvファイルの地域名からarea_idを取得する
+    public function getAreaId($csv_data) {
+        $areas = Area::all();
+        foreach($areas as $area) {
+            if($area->name === $csv_data) {
+                $area_id = $area->id;
+                return $area_id;
+            }
+        }
+    }
+
+    //csvファイルのジャンル名からgenre_idを取得する
+    public function getGenreId($csv_data) {
+        $genres = Genre::all();
+        foreach ($genres as $genre) {
+            if ($genre->name == $csv_data) {
+                $genre_id = $genre->id;
+                return $genre_id;
+            }
+        }
+        return redirect('/owner')->with('message', 'ジャンルは、「寿司」「焼肉」「居酒屋」「イタリアン」「ラーメン」のいずれかを記入してください。');
     }
 }

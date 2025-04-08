@@ -34,7 +34,7 @@
                 <p>全ての口コミ情報</p>
             </div>
             @if(session('message'))
-            <div class="flash-message">
+            <div class="session__message">
                 {{ session('message') }}
             </div>
             @endif

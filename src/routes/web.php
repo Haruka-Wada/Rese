@@ -4,7 +4,6 @@ use App\Http\Controllers\ReseController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Owner;
 use App\Http\Controllers\StripeController;
-use App\Http\Controllers\QrCodeController;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\GlobalState\Restorer;
@@ -25,7 +24,6 @@ Route::get('/', [ReseController::class, 'index']);
 Route::get('/detail/{shop_id?}', [ReseController::class, 'detail'])->name('rese.detail');
 Route::get('/search', [ReseController::class, 'search']);
 Route::get('/sort', [ReseController::class, 'sort']);
-Route::get('/test', [QrCodeController::class, 'test']);
 Route::post('review/delete', [ReseController::class, 'reviewDelete']);
 
 Route::middleware(['verified'])->group(function(){
@@ -74,6 +72,7 @@ Route::prefix('owner')->group(function(){
         Route::get('/create', [Owner\OwnerController::class, 'create']);
         Route::post('/store', [Owner\OwnerController::class, 'store']);
         Route::delete('/delete', [Owner\OwnerController::class, 'destroy']);
+        Route::post('/import', [Owner\CsvController::class, 'import']);
     });
     Route::get('/login', [Owner\LoginController::class, 'loginView'])->name('owner.loginView');
     Route::post('/login', [Owner\LoginController::class, 'login']);

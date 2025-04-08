@@ -7,7 +7,7 @@
 @section('search')
 <div class="header__search">
     <form action="/sort" method="get" id="sort_form" class="sort__form">
-        <select name="sort" id="sort" class="header__search-sort">
+        <select name="sort" id="sort" class="header__search-sort" onchange="this.form.submit()">
             <option value="" hidden>並び替え:ランダム</option>
             <option value="random">ランダム</option>
             <option value="desc">評価の高い順</option>
@@ -175,11 +175,5 @@
             })
         })
     })
-
-    $(function() {
-        $("#sort").change(function() {
-            $("#sort_form").submit();
-        });
-    });
 </script>
 @endsection

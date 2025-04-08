@@ -12,6 +12,26 @@
     <div class="shop__create">
         <a href="/owner/create">店舗の新規登録</a>
     </div>
+    <div class="import__container">
+        <form action="/owner/import" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="csv_file" id="csv_file" class="csv__input">
+            <div class="import__wrapper">
+                <button type="button" class="csv__button">CSVファイル選択</button>
+                <button class="import__button">インポート</button>
+            </div>
+        </form>
+        @if(session('message'))
+        <div class="session__message">
+            <p>{{ session('message') }}</p>
+        </div>
+        @endif
+        <div class="error">
+            @foreach ($errors->all() as $error)
+            <li>※{{$error}}</li>
+            @endforeach
+        </div>
+    </div>
     @foreach($shops as $shop)
     <div class="card" id="{{ $shop->id }}">
         <div class="card__img">
@@ -70,4 +90,10 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    document.querySelector(".csv__button").addEventListener("click", () => {
+        document.querySelector(".csv__input").click();
+    });
+</script>
 @endsection

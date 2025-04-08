@@ -68,7 +68,7 @@ class OwnerController extends Controller
         $path = isset($image) ? $image->store('image', 'public') : '';
         $full_path = asset('storage/' . $path);
 
-        $shop = Shop::create([
+        Shop::create([
             'name' => $name,
             'area_id' => $area_id,
             'genre_id' => $genre_id,

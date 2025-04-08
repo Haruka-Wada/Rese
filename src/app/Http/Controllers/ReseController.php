@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Storage;
 class ReseController extends Controller
 {
     public function index() {
-        $shops = Shop::inRandomOrder()->get();
+        $shops = Shop::all();
         $areas = Area::all();
         $genres = Genre::all();
         session()->flash('message', null);
@@ -54,19 +54,7 @@ class ReseController extends Controller
     //予約機能
     public function reservation(ReservationRequest $request) {
         $user_id = Auth::id();
-        $shop_id = $request->shop_id;
-        $date = $request->date;
-        $time = $request->time;
-        $number = $request->number;
-
-        $reservation = Reservation::create([
-            'user_id' => $user_id,
-            'shop_id' => $shop_id,
-            'date' => $date,
-            'time' => $time,
-            'number' => $number
-        ]);
-
+        Reservation::reservation($user_id, $request);
         return view('done');
     }
 
@@ -82,11 +70,7 @@ class ReseController extends Controller
 
     public function reservationUpdate(ReservationRequest $request) {
         $reservation = Reservation::find($request->id);
-        $reservation->update([
-            'date' => $request->date,
-            'time' => $request->time,
-            'number' => $request->number
-        ]);
+        Reservation::reservationUpdate($reservation, $request);
         return redirect('/mypage');
     }
 
@@ -116,18 +100,7 @@ class ReseController extends Controller
     }
 
     public function score(ReviewRequest $request) {
-        $image = $request->file('image');
-        $path = isset($image) ? $image->store('review', 'public') : '';
-        $full_path = asset('storage/' . $path);
-
-        Review::create([
-            'shop_id' => $request->shop_id,
-            'user_id' => Auth::id(),
-            'rating' => $request->rating,
-            'comment' => $request->comment,
-            'image' => $full_path
-        ]);
-
+        Review::score($request, Auth::id());
         return redirect(route('rese.detail',[
             'shop_id' => $request->shop_id
         ]));
@@ -142,24 +115,7 @@ class ReseController extends Controller
     public function reviewUpdate(Request $request) {
         $this->validate($request, Review::$rules);
         $reviewed = Review::reviewed(Auth::id(), $request->shop_id);
-        $reviewed->update([
-            'rating' => $request->rating,
-            'comment' => $request->comment,
-        ]);
-
-        if($request->image) {
-            //ストレージに保存されている画像削除
-            $old_image = basename($reviewed->image);
-            Storage::disk('public')->delete('review/' . $old_image);
-            //新たに保存
-            $image = $image = $request->file('image');
-            $path = isset($image) ? $image->store('review', 'public') : '';
-            $full_path = asset('storage/' . $path);
-
-            $reviewed->update([
-                'image' => $full_path
-            ]);
-        }
+        Review::reviewUpdate($reviewed, $request);
 
         return redirect(route('rese.detail', [
             'shop_id' => $request->shop_id
@@ -181,15 +137,13 @@ class ReseController extends Controller
             $no_reviews = [];
             $sort = "ランダム";
         } else {
+            $query = Review::query();
+            $query = Review::getRatingAverages($query);
             if($request->sort == "desc") {
-                $query = Review::query();
-                $query = Review::getRatingAverages($query);
                 $rating_averages = $query->get()
                                 ->sortByDesc('rating_average');
                 $sort = "評価の高い順";
             }elseif($request->sort == "asc") {
-                $query = Review::query();
-                $query = Review::getRatingAverages($query);
                 $rating_averages = $query->get()
                     ->sortBy('rating_average');
                 $sort = "評価の低い順";
