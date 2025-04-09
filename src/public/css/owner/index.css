@@ -68,6 +68,11 @@
     cursor: pointer;
 }
 
+.file-name {
+    text-align: center;
+    font-size: 18px;
+}
+
 .session__message {
     text-align: center;
     margin: 20px;

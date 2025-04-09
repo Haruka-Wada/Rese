@@ -84,6 +84,9 @@
                     <button type="button" class="review__image-button">クリックして写真を追加</button>
                     <input type="file" name="image" id="upload" class="review__image-upload">
                 </div>
+                <div class="review__image-preview">
+                    <img id="preview" src="" alt="">
+                </div>
             </form>
         </div>
     </div>
@@ -93,24 +96,5 @@
 </div>
 
 <script src="{{ asset('js/favorite.js') }}"></script>
-<script type="text/javascript">
-    //テキストエリアの文字数表示
-    const textarea = document.getElementById("textarea")
-    const maxLength = textarea.getAttribute("maxlength")
-    const commentCounter = document.getElementById("comment__counter")
-    textarea.addEventListener("input", () => {
-        const currentLength = textarea.value.length;
-        commentCounter.textContent = `${currentLength} / ${maxLength}（最高文字数）`
-        if (currentLength > maxLength) {
-            commentCounter.style.color = "red"
-        } else {
-            commentCounter.style.removeProperty("color")
-        }
-    })
-
-    //画像追加ボタン
-    document.querySelector(".review__image-button").addEventListener("click", () => {
-        document.querySelector(".review__image-upload").click();
-    });
-</script>
+<script src="{{ asset('js/review.js') }}"></script>
 @endsection

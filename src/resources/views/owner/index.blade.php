@@ -21,6 +21,7 @@
                 <button class="import__button">インポート</button>
             </div>
         </form>
+        <div class="file-name" id="file-name"></div>
         @if(session('message'))
         <div class="session__message">
             <p>{{ session('message') }}</p>
@@ -92,8 +93,19 @@
 </div>
 
 <script type="text/javascript">
+    //ファイルの選択
     document.querySelector(".csv__button").addEventListener("click", () => {
         document.querySelector(".csv__input").click();
     });
+    //ファイル名の取得と表示
+    const fileForm = document.getElementById('csv_file');
+    const fileNameArea = document.getElementById('file-name');
+    fileForm.addEventListener('change', function(e) {
+        if(window.File) {
+            const file = fileForm.files[0];
+            const fileName = file.name;
+            $(fileNameArea).html(fileName);
+        }
+    })
 </script>
 @endsection

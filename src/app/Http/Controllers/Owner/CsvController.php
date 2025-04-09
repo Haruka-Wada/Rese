@@ -14,7 +14,7 @@ class CsvController extends Controller
         if($request->hasFile('csv_file')) {
             $file = $request->file('csv_file');
             if ($file->getClientOriginalExtension() !== "csv") {
-                return redirect('/owner')->with('message', '不適切な拡張子です。');
+                return redirect('/owner')->with('message', 'CSVファイルを選択してください。');
             }
             $path = $file->getRealPath();
             $fp = fopen($path, 'r');

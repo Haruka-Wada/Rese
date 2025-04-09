@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Owner;
-use App\Models\Shop;
-use App\Models\Reservation;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -28,8 +24,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        Auth::login($owner);
-        return redirect()->route('owner.index');
+        return redirect('/admin')->with('message', '店舗代表者を登録しました。');
 
     }
 }

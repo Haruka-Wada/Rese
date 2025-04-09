@@ -9,6 +9,11 @@
     <div class="form__title">
         <p class="form__title-text">Owner Registration</p>
     </div>
+    @if(session('message'))
+    <div class="session__message">
+        {{ session('message') }}
+    </div>
+    @endif
     <div class="form__content">
         <form class="form" action="/owner/register" method="post">
             @csrf
