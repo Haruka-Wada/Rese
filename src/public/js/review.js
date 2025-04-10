@@ -26,3 +26,29 @@ fileInput.addEventListener("change", function(e) {
     }
     reader.readAsDataURL(e.target.files[0])
 })
+
+//ドラッグアンドドロップ
+var $dropArea = $('.drop-area');
+
+$dropArea.on('dragover', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).css('border', '3px #ccc dashed')
+});
+$dropArea.on('dragleave', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).css('border', 'none');
+});
+$dropArea.on('drop', function(e) {
+    $(this).css('border', 'none');
+    e.preventDefault();
+    const files = e.originalEvent.dataTransfer.files;
+    fileInput.files = e.originalEvent.dataTransfer.files;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        console.log('true');
+        $('#preview').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(files[0]);
+});

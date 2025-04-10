@@ -82,6 +82,7 @@
                 </div>
                 <div class="review__image">
                     <button type="button" class="review__image-button">クリックして写真を追加</button>
+                    <p class="drop-area">またはドラッグアンドドロップ</p>
                     <input type="file" name="image" id="upload" class="review__image-upload">
                 </div>
                 <div class="review__image-preview">
@@ -97,4 +98,5 @@
 
 <script src="{{ asset('js/favorite.js') }}"></script>
 <script src="{{ asset('js/review.js') }}"></script>
+
 @endsection

@@ -81,6 +81,7 @@
                 </div>
                 <div class="review__image">
                     <button type="button" class="review__image-button">クリックして写真を変更</button>
+                    <p class="drop-area">またはドラッグアンドドロップ</p>
                     <input type="file" name="image" id="upload" class="review__image-upload" value="{{ $reviewed->image }}">
                 </div>
                 <div class="review__image-preview">
