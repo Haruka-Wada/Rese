@@ -75,7 +75,7 @@
                 </div>
                 <div class="card__content-detail-fav">
                     @auth
-                    @if(!$shop->isLikedBy(Auth::user()))
+                    @if(empty($shop->isLikedBy(Auth::user())))
                     <img class="like-toggle" src=" {{ asset('img/heart.png') }}" alt="お気に入りボタン" data-shop-id="{{ $shop->id }}">
                     @else
                     <img class="like-toggle liked" src="{{ asset('img/heart.png') }}" alt="お気に入りボタン" data-shop-id="{{ $shop->id }}">

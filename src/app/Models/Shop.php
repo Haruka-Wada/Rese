@@ -37,23 +37,10 @@ class Shop extends Model
         return $query;
     }
 
-    public function sort($request, $query) {
-        if($request->sort == "random") {
-            $query->inRandomOrder();
-            return $query;
-        }elseif($request->sort == "desc") {
-            $ratingAverage = Review::select('shop_id')
-                            ->selectRaw('AVG(rating) as ratingAverage')
-                            ->groupBy('shop_id')
-                            ->get()
-                            ->sortBy('ratingAverage');
-            dd($ratingAverage);
-        }
-    }
-
     //お気に入り登録しているかどうか
     public function isLikedBy($user): bool {
-        return favorite::where('user_id', $user->id)->where('shop_id', $this->id)->first() !==null;
+        $isLikedBy = Favorite::where('user_id', $user->id)->where('shop_id', $this->id)->first() !==null;
+        return $isLikedBy;
     }
 
     public function reservations() {
